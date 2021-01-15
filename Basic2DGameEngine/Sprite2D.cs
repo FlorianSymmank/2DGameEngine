@@ -12,18 +12,10 @@ namespace Basic2DGameEngine
         public string Directory = "";
         public Bitmap Sprite = null;
 
-        public Sprite2D(Vector2 Position, Vector2 Scale, string Tag, string Directory) : base(Position, Scale, Tag) {
+        public Sprite2D(Vector2 Position, Vector2 Scale, string Tag, string Directory, Vector2 Velocity = null, float Mass = 0f) : base(Position, Scale, Tag, Velocity, Mass) {
 
             this.Directory = Directory;
             Sprite = Image.FromFile($"Assets/Sprites/{Directory}.jpg") as Bitmap;
-        }
-
-        public Sprite2D(Vector2 Position, Vector2 Scale, Vector2 Velocity, string Tag, string Directory, float Mass) : base(Position, Scale, Velocity, Tag, Mass) {
-
-            this.Velocity = Velocity;
-            this.Directory = Directory;
-            Sprite = Image.FromFile($"Assets/Sprites/{Directory}.jpg") as Bitmap;
-            this.Mass = Mass;
         }
     }
 }

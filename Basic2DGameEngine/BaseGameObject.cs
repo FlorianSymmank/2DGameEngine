@@ -14,19 +14,17 @@ namespace Basic2DGameEngine
         public string Tag = "";
         public float Mass = 0;
 
-        public BaseGameObject(Vector2 Position, Vector2 Scale, string Tag) {
+        public BaseGameObject(Vector2 Position, Vector2 Scale, string Tag, Vector2 Velocity = null, float Mass = 0f) {
             this.Position = Position;
             this.Scale = Scale;
             this.Tag = Tag;
+            this.Velocity = Velocity ?? new Vector2();
+            this.Mass = Mass;
 
             Log.Info($"[GameObject] {Tag} - GameObject registerd");
             GameEngine.RegisterGameObject(this);
         }
 
-        public BaseGameObject(Vector2 Position, Vector2 Scale, Vector2 Velocity, string Tag, float Mass) : this(Position, Scale, Tag) {
-            this.Velocity = Velocity;
-            this.Mass = Mass;
-        }
 
         public void DestroySelf() {
             Log.Info($"[GameObject] {Tag} - GameObject destroyed");

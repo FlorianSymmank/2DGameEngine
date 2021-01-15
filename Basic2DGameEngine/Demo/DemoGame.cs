@@ -30,7 +30,7 @@ namespace Basic2DGameEngine.Demo
             shape = new Shape2D(new Vector2(10, 10), new Vector2(10, 10), "Test", Color.Yellow);
             player = new Sprite2D(new Vector2(10, 150), new Vector2(20, 20), "player", "pepega");
             player2 = new Sprite2D(new Vector2(50, 20), new Vector2(20, 20), "player", "pepega");
-            player3 = new Sprite2D(new Vector2(80, 150), new Vector2(20, 20), new Vector2(0, -0.15f), "player", "pepega", 35);
+            player3 = new Sprite2D(new Vector2(80, 150), new Vector2(20, 20), "player", "pepega", new Vector2(0, -0.15f), 35);
 
             System.Timers.Timer Timer = new System.Timers.Timer();
             Timer.Elapsed += Timer_Tick;
