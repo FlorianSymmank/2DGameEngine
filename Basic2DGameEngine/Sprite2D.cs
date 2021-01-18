@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Basic2DGameEngine
 {
-    public class Sprite2D : BaseGameObject
+    public class Sprite2D : BasePhysicObject
     {
         public string Directory = "";
-        public Bitmap Sprite = null;
+        public Bitmap Sprite;
 
         public Sprite2D(Vector2 Position, Vector2 Scale, string Tag, string Directory, Vector2 Velocity = null, float Mass = 0f) : base(Position, Scale, Tag, Velocity, Mass) {
 

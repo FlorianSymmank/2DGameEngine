@@ -12,14 +12,13 @@ namespace Basic2DGameEngine.Demo
 {
     public class DemoGame : GameEngine
     {
-        Stopwatch sw = new Stopwatch();
+        Stopwatch stopwatch = new Stopwatch();
         int FrameCounter = 0;
 
         Sprite2D player;
         Sprite2D player2;
         Sprite2D player3;
         Shape2D shape;
-
 
         Vector2 Gravity = new Vector2(0, 0.005f);
 
@@ -37,7 +36,7 @@ namespace Basic2DGameEngine.Demo
             Timer.Interval = 1000;
             Timer.Enabled = true;
 
-            sw.Start();
+            stopwatch.Start();
         }
 
         private void Timer_Tick(object sender, ElapsedEventArgs e) {
@@ -51,13 +50,14 @@ namespace Basic2DGameEngine.Demo
 
         public override void OnUpdate() {
 
-            float dt = sw.ElapsedMilliseconds;
+            // time between updates
+            float dt = stopwatch.ElapsedMilliseconds;
 
-            foreach (BaseGameObject gameObject in AllObjects) {
-                gameObject.ApplyForce(Gravity, dt);
+            foreach (BasePhysicObject pyhsicObject in AllObjects.OfType<BasePhysicObject>()) {
+                pyhsicObject.ApplyForce(Gravity, dt);
             }
 
-            sw.Restart();
+            stopwatch.Restart();
         }
 
         public override void GetKeyDown(KeyEventArgs e) {

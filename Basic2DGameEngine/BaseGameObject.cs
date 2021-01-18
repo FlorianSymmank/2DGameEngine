@@ -8,18 +8,16 @@ namespace Basic2DGameEngine
 {
     public class BaseGameObject
     {
-        public Vector2 Position = null;
-        public Vector2 Scale = null;
-        public Vector2 Velocity = new Vector2();
-        public string Tag = "";
-        public float Mass = 0;
+        public Vector2 Position;
+        public Vector2 Scale;
+        public string Tag;
+
 
         public BaseGameObject(Vector2 Position, Vector2 Scale, string Tag, Vector2 Velocity = null, float Mass = 0f) {
-            this.Position = Position;
-            this.Scale = Scale;
+
+            this.Position = Position ?? new Vector2();
+            this.Scale = Scale ?? new Vector2();
             this.Tag = Tag;
-            this.Velocity = Velocity ?? new Vector2();
-            this.Mass = Mass;
 
             Log.Info($"[GameObject] {Tag} - GameObject registerd");
             GameEngine.RegisterGameObject(this);
@@ -29,41 +27,6 @@ namespace Basic2DGameEngine
         public void DestroySelf() {
             Log.Info($"[GameObject] {Tag} - GameObject destroyed");
             GameEngine.UnregisterGameObject(this);
-        }
-
-        public void ApplyForce(Vector2 force, float dt) {
-
-            if (Mass == 0)
-                return;
-
-            if (IsColliding("player")) {
-                Velocity = new Vector2();
-                return;
-            }
-
-            Vector2 acceleration = new Vector2(force.X / Mass, force.Y / Mass);
-
-            Velocity.X += acceleration.X * dt;
-            Velocity.Y += acceleration.Y * dt;
-
-            Position.X += Velocity.X * dt;
-            Position.Y += Velocity.Y * dt;
-
-            Velocity.X = Math.Min(Velocity.X, 1);
-            Velocity.Y = Math.Min(Velocity.Y, 1);
-        }
-
-        public bool IsColliding(string tag) {
-
-            foreach (BaseGameObject gameObject in GameEngine.AllObjects.Where(x => x.Tag == tag && x != this)) {
-                if (Position.X < gameObject.Position.X + gameObject.Scale.X &&
-                Position.X + Scale.X > gameObject.Position.X &&
-                Position.Y < gameObject.Position.Y + gameObject.Scale.Y &&
-                Position.Y + Scale.Y > gameObject.Position.Y)
-                    return true;
-            }
-
-            return false;
-        }
+        }        
     }
 }
