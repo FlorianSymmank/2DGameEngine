@@ -13,7 +13,7 @@ namespace Basic2DGameEngine
         public string Tag;
 
 
-        public BaseGameObject(Vector2 Position, Vector2 Scale, string Tag, Vector2 Velocity = null, float Mass = 0f) {
+        public BaseGameObject(Vector2 Position, Vector2 Scale, string Tag) {
 
             this.Position = Position ?? new Vector2();
             this.Scale = Scale ?? new Vector2();

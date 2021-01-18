@@ -40,11 +40,11 @@ namespace Basic2DGameEngine
 
         public bool IsColliding(string tag) {
 
-            foreach (BaseGameObject gameObject in GameEngine.AllObjects.Where(x => x.Tag == tag && x != this)) {
-                if (Position.X < gameObject.Position.X + gameObject.Scale.X &&
-                Position.X + Scale.X > gameObject.Position.X &&
-                Position.Y < gameObject.Position.Y + gameObject.Scale.Y &&
-                Position.Y + Scale.Y > gameObject.Position.Y)
+            foreach (BasePhysicObject physicObject in GameEngine.AllObjects.Where(x => x.Tag == tag && x != this)) {
+                if (Position.X < physicObject.Position.X + physicObject.Scale.X &&
+                Position.X + Scale.X > physicObject.Position.X &&
+                Position.Y < physicObject.Position.Y + physicObject.Scale.Y &&
+                Position.Y + Scale.Y > physicObject.Position.Y)
                     return true;
             }
 

@@ -101,6 +101,10 @@ namespace Basic2DGameEngine
                 if (gameObject is Sprite2D sprite) {
                     g.DrawImage(sprite.Sprite, sprite.Position.X, sprite.Position.Y, sprite.Scale.X, sprite.Scale.Y);
                 }
+
+                if (gameObject is Text2D text) {
+                    g.DrawString(text.Text, text.Font, text.Brush, text.Position.X, text.Position.Y);
+                }
             }
         }
 
